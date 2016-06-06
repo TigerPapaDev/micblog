@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if title %}
+    <title>{{ title }} - microblog </title>
+    {% else %}
+    <title>welcome to flask microbolg</title>
+    {% endif %}
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+</head>
+<body>
+<div class="jumbotron">
+   <img alt="Brand" src="../static/img/logo.png"> {{ title }}
+
+</div>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+
+    {% block content %}{% endblock %}
+</body>
+</html>
